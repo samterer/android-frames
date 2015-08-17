@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:gesture-image="http://schemas.polites.com/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ff000000"
+    android:orientation="vertical" >
+<LinearLayout 
+    android:id="@+id/preview_wrap"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:gravity="center"
+>
+</LinearLayout>
+  
+<LinearLayout
+    android:id="@+id/preview_adlayout"
+    android:layout_width="fill_parent"
+    android:background="#99000000"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="bottom">
+ 
+</LinearLayout>
+
+<ProgressBar
+    android:id="@+id/progres_gen_image"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:layout_gravity="center" />
+
+</FrameLayout>

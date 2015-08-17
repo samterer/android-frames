@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff000000"
+    android:orientation="vertical" >
+
+    
+
+<ImageView
+    android:id="@+id/preview_image"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+</ImageView>
+<LinearLayout
+    android:id="@+id/preview_btn_wrap"
+    android:layout_width="fill_parent"
+    android:background="#99000000"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:gravity="center"
+
+        android:layout_weight="1">
+    <ImageButton 
+        android:id="@+id/preview_save_image"
+        android:layout_height="48dip"
+    	android:layout_width="fill_parent"
+    	android:src="@drawable/download"
+        android:background="@drawable/preview_bg"
+	    android:scaleType="centerInside"
+
+	    android:layout_gravity="center"
+    ></ImageButton>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+       	android:gravity="center"
+        android:layout_weight="1">
+    <ImageButton android:id="@+id/preview_set_wallpaper"
+        android:layout_height="48dip"
+    	android:layout_width="fill_parent"
+    	android:src="@drawable/wallpaper"
+     	android:background="@drawable/preview_bg"
+	    android:scaleType="centerInside"
+
+	    android:layout_gravity="center"
+    ></ImageButton>
+    </LinearLayout>  
+    
+      <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:gravity="center"
+        android:background="#00000000"
+        android:layout_weight="1">
+    <ImageButton
+        android:id="@+id/preview_share"
+        android:layout_height="48dip"
+   		android:layout_width="fill_parent"
+    	android:src="@drawable/share"
+     	android:background="@drawable/preview_bg"
+	    android:scaleType="centerInside"
+
+
+    ></ImageButton>
+</LinearLayout>
+</LinearLayout>
+<ProgressBar
+    android:id="@+id/progres_gen_image"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center" />
+
+</FrameLayout>

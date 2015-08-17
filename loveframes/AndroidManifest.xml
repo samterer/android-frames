@@ -1,0 +1,80 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.androidfuture.love.framesfree"
+    android:versionCode="24"
+    android:versionName="4.5.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="14" />
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="FrameApp"
+        android:allowBackup="true"
+        android:icon="@drawable/icon_launch"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name="SplashActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.appdao.android.feedback.FeedBack"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity
+            android:name="com.androidfuture.set.SetActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.androidfuture.set.AboutUsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.androidfuture.set.VersionInfoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.androidfuture.frames.ui.PreviewActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name="com.androidfuture.frames.ui.FrameChooseActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.androidfuture.frames.ui.ProcessActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.FacebookAlbumFragment" >
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.FacebookPhotoSelectActivity" >
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.PhonePhotoAlbumFragment" >
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.PhonePhotoSelectActivity" >
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.PhotoChooseActivity" >
+        </activity>
+
+        <activity android:name="com.facebook.LoginActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:label="@string/app_name" />
+
+         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+    </application>
+
+</manifest>

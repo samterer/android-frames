@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+ <TextView
+        android:layout_margin="40dip"
+        android:id="@+id/product_info"
+        android:textSize="30dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#ff0f4403"
+        android:layout_alignParentTop = "true"
+       android:text="@string/product_info" />
+ <TextView
+        android:layout_margin="10dip"
+        android:id="@+id/version_info"
+        android:textSize="18dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+         android:textColor="#ff0f4403"
+   		android:text="@string/version_info"
+   		android:layout_below="@id/product_info" />
+   	
+   	<Button android:id="@+id/set_theme_btn"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="40dip"
+   		android:layout_marginRight="40dip"
+		android:gravity="center"
+		android:text="@string/set_theme"
+		android:layout_marginTop="30dip"
+		android:textSize="20dip"
+		android:padding="5dip"
+		android:layout_below="@id/version_info"
+		android:visibility="gone"
+		>
+	    
+	</Button>
+   	<Button android:id="@+id/set_clear_btn"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="40dip"
+   		android:layout_marginRight="40dip"
+		android:gravity="center"
+		android:text="@string/clear_memory"
+		android:layout_marginTop="30dip"
+		android:textSize="20dip"
+		android:padding="5dip"
+		android:layout_below="@id/set_theme_btn"
+		>
+	    
+	</Button>	<Button android:id="@+id/set_share_btn"
+		android:layout_below="@id/set_clear_btn"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="40dip"
+   		android:layout_marginRight="40dip"
+		android:gravity="center"
+		android:text="@string/share_to_friend"
+		android:layout_marginTop="30dip"
+		android:textSize="20dip"
+		android:padding="5dip"
+		>
+	    
+	</Button>
+	
+	<Button
+	    android:id="@+id/set_feedback"
+	    android:layout_below="@id/set_share_btn"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="40dip"
+   		android:layout_marginRight="40dip"
+		android:gravity="center"
+		android:text="@string/set_feedback"
+		android:layout_marginTop="30dip"
+		android:textSize="20dip"
+		android:padding="5dip"
+	>
+	    
+	</Button>
+		<Button
+	    android:id="@+id/set_more_btn"
+	    android:layout_below="@id/set_feedback"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="40dip"
+   		android:layout_marginRight="40dip"
+		android:gravity="center"
+		android:text="@string/more_app"
+		android:layout_marginTop="30dip"
+		android:textSize="20dip"
+		android:padding="5dip"
+	>
+	    
+	</Button>
+	 <ProgressBar
+     android:id="@+id/set_progress_bar"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_centerInParent="true"
+    
+     >
+     </ProgressBar>
+</RelativeLayout>

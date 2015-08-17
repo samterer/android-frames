@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dibujos Animados Marcos</string>
+	<string name="import_photos">añadir foto</string>
+	<string name="gallery">Galería de fotos</string>
+	<string name="camera">Cámara</string>
+
+	<string name="save_share">guardar y compartir</string>
+	<string name="set_wallpaper">establecer como fondo</string>
+  	<string name="save_image">guardar en la galería</string>
+	<string name="share_image">	compartir</string>
+	<string name="hint_select_photo">Usted tiene que seleccionar %1$d foto</string>
+	<string name="share_title">compartir:</string>
+	<string name="share_success">compartir con éxito</string>
+	<string name="share_fail">no comparten</string>
+	<string name="share_from">Share from </string>
+	<string name="setting">Ajustes</string>
+	<string name="feedback">Realimentación</string>
+	<string name="set_feedback">Dame tu sugerencia</string>
+	<string name="version_info">Versión 1.2</string>
+<string name="share_to_friend">Dile a tus amigos</string>
+<string name="share_msg">Estoy usando la aplicación maravillosa: Dibujos Animados Marcos, la mejor aplicación Android de marcos de fotos. Descárgalo gratis&lt;/string&gt;</string>
+<string name="set_wallpaper_ok">Como imagen de fondo con éxito</string>
+<string name="set_wallpaper_fail">Fallo al configurar el fondo</string>
+<string name="ok">Aprobado</string>
+<string name="cancel">Cancelar</string>
+<string name="exit_msg">¿quieres salir?</string>
+<string name="later">Posponer</string>
+<string name="rating_msg">¿Podría apoyar al dar una calificación?</string>
+<string name="rating_title">Valoración de la invitación</string>
+<string name="product_info">Dibujos Animados Marcos</string>
+<string name="save_image_success">Guardar en Galería con éxito</string>
+
+<string name="tab_multi">Múltiple</string>
+<string name="tab_favorite">Favorito</string>
+<string name="tab_hot">Caliente</string>
+<string name="tab_new">Nuevo</string>
+<string name="tab_more">Más</string>
+<string name="fail_load_frame">Fallo al cargar marco!</string>
+<string name="clear_memory">Borrar caché</string>
+<string name="clear_memory_ing">claro...</string>
+<string name="cleared_memory">Finalizar caché de compensación!</string>
+<string name="set_theme">Configurar Tonalidades</string>
+<string name="loading_more">Carga más...</string>
+<string name="remove_fav">Eliminar favorito?</string>
+<string name="add_fav">Añadir favorito?</string>
+<string name="loading_end">No hay más marcos</string>
+<string name="loading_frames">Carga de marcos, por favor espere!</string>
+<string name="no_net_loading_more">Sin conexión de red, no puede cargar más imágenes!</string>
+<string name="tab_history">Historia</string>
+<string name="remove_history">Retírelo del registro histórico?</string>
+<string name="download_progress">Descargar imagen Marco</string>
+<string name="download_facebookphoto_progress">Descarga de fotos desde Facebook</string>
+<string name="download_cancel">Cancelar descarga!</string>
+<string name="more_app">Más Aplicaciones</string>
+<string name="gen_bitmap_fail">No se pudo generar de fotos, puede intentarlo de nuevo</string>
+<string name="created_in">Creada en </string>
+<string name="title_select_album">Seleccionar un álbum</string>
+<string name="title_select_photo">Seleccione una foto</string>
+
+<string name="facebook_load_fail">Fallo al cargar datos desde Facebook</string>
+<string name="facebook_auth_fail">Dejar de autorizar a Facebook</string>
+<string name="facebook_login_fail">Fallo al iniciar sesión Facebook...</string>
+<string name="init_text">Inicialización de los recursos, por favor espere...</string>
+<string name="select_frame">Touch to select one frame</string>
+
+<string name="no_sdcard_title">Dibujos Animados Marcos requiere la tarjeta de memoria</string>
+<string name="no_sdcard">Por favor, inserte una tarjeta de memoria antes de usarla Dibujos Animados Marcos </string>
+<string name="lang">es</string>
+</resources>

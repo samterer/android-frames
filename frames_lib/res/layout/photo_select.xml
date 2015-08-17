@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/phone_chose_photo_gallery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/phone_photo_grid"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/phone_chose_photo_gallery"
+        android:layout_gravity="top"
+    	android:background="#ffffffff"
+        android:horizontalSpacing="1dp"
+        android:listSelector="@null"
+        android:numColumns="3"
+        android:verticalSpacing="1dp" >
+    </GridView>
+
+</RelativeLayout>

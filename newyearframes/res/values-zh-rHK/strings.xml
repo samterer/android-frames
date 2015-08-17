@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">新年相框</string>
+<string name="import_photos">添加照片</string>
+<string name="gallery">相冊</string>
+<string name="camera">照相</string>
+<string name="save_share">保存，分享</string>
+<string name="set_wallpaper">設為壁紙</string>
+<string name="save_image">保存到相冊</string>
+<string name="share_image">分享</string>
+<string name="hint_select_photo">你必須選擇%1$d張照片</string>
+<string name="share_title">分享到:</string>
+<string name="share_success">分享成功</string>
+<string name="share_fail">分享失敗</string>
+<string name="share_from">分享自: </string>
+<string name="setting">設置</string>
+<string name="feedback">反饋</string>
+<string name="set_feedback">給我們提供建議</string>
+<string name="version_info">版本 1.0</string>
+<string name="share_to_friend">告訴朋友</string>
+<string name="share_msg">我正在使用新年相框.免費下載地址: &lt;/string&gt;</string>
+<string name="set_wallpaper_ok">設置壁紙成功</string>
+<string name="set_wallpaper_fail">設置壁紙失敗</string>
+<string name="ok">確定</string>
+<string name="cancel">取消</string>
+<string name="exit_msg">你確定退出?</string>
+<string name="later">以後再說</string>
+<string name="rating_msg">如果你覺得這個應用不錯，請給我們一個評價吧? 謝謝。 </string>
+<string name="rating_title">評價邀請</string>
+<string name="product_info">新年相框</string>
+<string name="save_image_success">保存到相冊成功</string>
+
+<string name="tab_favorite">收藏</string>
+<string name="tab_hot">熱門</string>
+<string name="tab_new">最新</string>
+<string name="tab_more">更多</string>
+<string name="tab_history">歷史記錄</string>
+<string name="fail_load_frame">下載相框失敗!</string>
+<string name="clear_memory">清除緩存</string>
+<string name="clear_memory_ing">正在清除緩存...</string>
+<string name="cleared_memory">完成清除緩存</string>
+<string name="set_theme">設置風格</string>
+<string name="loading_more">加載更多</string>
+<string name="remove_fav">取消收藏？ </string>
+<string name="add_fav">收藏相框？ </string>
+<string name="loading_end">目前沒有更多相框</string>
+<string name="loading_frames">正在下載相框，請等待!</string>
+<string name="no_net_loading_more">沒有網絡，不能加載更多!</string>
+<string name="remove_history">從歷史記錄中刪除?</string>
+<string name="more_app">更多應用</string>
+<string name="gen_bitmap_fail">生成照片失敗,請重試一次</string>
+<string name="created_in">創建於: </string>
+<string name="title_select_album">選擇Facebook的相冊</string>
+<string name="title_select_photo">選擇一張照片</string>
+<string name="lang">cn</string>
+<string name="facebook_load_fail">從Facebook下載照片失敗</string>
+<string name="facebook_auth_fail">Facebook授權認證失敗</string>
+<string name="facebook_login_fail">Facebook登錄失敗</string>
+<string name="init_text">正在初始化資源...</string>
+
+<string name="download_progress">正在下載</string>
+<string name="download_facebookphoto_progress">正从Facebook下載照片</string>
+<string name="download_cancel">下載取消!</string>
+</resources>

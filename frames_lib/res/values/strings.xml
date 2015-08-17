@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="lang">1</string>
+    <string name="import_photos">Import photo</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="save_share">Save and Share</string>
+    <string name="set_wallpaper">Set as wallpaper</string>
+    <string name="save_image">Save to gallery</string>
+    <string name="share_image">Share</string>
+    <string name="hint_select_photo">You have to select %1$d photo(s)</string>
+     <string name="set_wallpaper_ok">Set wallpaper successfully</string>
+    <string name="set_wallpaper_fail">Fail to set wallpaper</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit_msg">Do you want to exit?</string>
+    <string name="later">Later</string>
+    <string name="rating_msg">Could you support us by giving a rating?</string>
+    <string name="rating_title">Rating Invitation</string>
+    <string name="save_image_success">Saved to gallery successfully</string>
+    <string name="tab_multi">Multiple</string>
+    <string name="tab_favorite">Favorite</string>
+    <string name="tab_hot">Hottest</string>
+    <string name="tab_new">Newest</string>
+    <string name="tab_more">More</string>
+    <string name="fail_load_frame">Fail to load frame!</string>
+    <string name="set_theme">Set Theme</string>
+    <string name="loading_more">Loading more...</string>
+    <string name="remove_fav">Remove favorite?</string>
+    <string name="add_fav">Add favorite?</string>
+    <string name="loading_end">No more frames</string>
+    <string name="loading_frames">Loading frames, please wait!</string>
+    <string name="no_net_loading_more">No network connection, can\'t load more frames!</string>
+    <string name="tab_history">History</string>
+    <string name="remove_history">Remove it from history record?</string>
+    <string name="download_progress">Downloading frame image</string>
+    <string name="download_facebookphoto_progress">Downloading photo from Facebook</string>
+    <string name="download_cancel">Cancel download!</string>
+    <string name="more_app">More Apps</string>
+    <string name="gen_bitmap_fail">Failed to generate Photo, you can try again</string>
+    <string name="created_in">Created in </string>
+    <string name="title_select_album">Select an album</string>
+    <string name="title_select_photo">Select a photo</string>
+    <string name="facebook_load_fail">Fail to load data from Facebook</string>
+    <string name="facebook_auth_fail">Fail to authorize to Facebook</string>
+    <string name="facebook_login_fail">Fail to login Facebook</string>
+    <string name="init_text">Initializing resources, please wait...</string>
+    <string name="select_frame">Touch to select one frame</string>
+    <string name="no_sdcard_title">Love Frames requires Memory card</string>
+    <string name="no_sdcard">Please insert a memory card before using Love Frames</string>
+    <string name="update_title">New Version %1$s</string>
+    <string name="fail_process_image">Fail to process image</string>
+	<string name="facebook">Facebook</string>
+	<string name="phone">Phone</string>
+		<string name="clear_select_photos">Clear all selected photos?</string>
+	<string name="select_photo_limit">You can\'t select more than %1$s photos</string>
+	<string name="select_less_photo">You need select at least 2 photos</string>
+	<string name="add_photo">Add</string>
+	<string name="selected_photo">%1$s photos selected</string>
+	<string name="click_login_facebook">Click to login</string>
+	<!-- set -->
+    <string name="setting">Settings</string>
+    <string name="section_basic_set">Basic Set</string>
+    <string name="section_info">Information</string>
+    <string name="clear_memory">Clear Cache</string>
+    <string name="clear_memory_hint">Clear cache files for image</string>
+    <string name="clear_memory_ing">Clearing Cache&#8230;</string>
+    <string name="cleared_memory">Finish clearing cache!</string>
+    <string name="set_rate">Review</string>
+    <string name="set_rate_hint">Review this application in google play</string>
+    <string name="set_feedback">Give me your suggest</string>
+    <string name="set_feedback_hint">Help me make this application more wonderful</string>
+    <string name="share_to_friend">Tell to your friends</string>
+    <string name="share_to_friend_hint">Tell to your friends what you use</string>
+    <string name="set_check_update">Check new version</string>
+    <string name="set_check_update_hint">Check whether there is a new version</string>
+    <string name="set_version_info">Version</string>
+    <string name="set_version_info_hint">New features for release versions</string>
+    <string name="set_about_us">About us</string>
+    <string name="set_about_us_hint">More information about the developper</string>
+    <string name="image_info">Use: %1$d, Download: %2$d, Share: %3$d, Favorite: %4$d</string>
+    <string name="image_size">Size: </string>
+    <string name="downloaded_no_fav">Can\'t favorite downloaded image</string>
+    <string name="downloaded_hint">The image have downloaded</string>
+    <string name="download_time">Download time:</string>
+     <string name="cache_size">Image cache size: </string>
+    <string name="computing_cache">Computing image cache size &#8230;</string>
+    <string name="column_set">Browse mode</string>
+    <string name="column_set_hint"></string>
+    <string name="list_mode">List</string>
+    <string name="grid_mode">Grid</string>
+    <string name="checking_update">Checking new version</string>
+    <string name="is_new_version">Current is newest</string>
+    <string name="share_title">Share to:</string>
+    <string name="share_success">Share successfully</string>
+    <string name="share_fail">Failed to share</string>
+    <string name="share_from">Share from </string>
+    <string name="feedback">Feedback</string>
+    <string name="upload">Upload</string>
+    <string name="version_info">Version</string>
+    <string name="fail_recog_gallery">Fail to recognize gallery</string>
+    <string name="system_gallery_add">Add from built-in gallery</string>
+    
+	<string name="release_version">	 
+	    * Version 4.2.1\n
+	    1) Fix crash error\n
+	    2) Optimize importing Facebook photo\n
+	    \n
+	    \n
+	    
+        * Version 4.0.1\n
+        1) Beatify UI\n
+        2) Opitmize use and share\n
+        \n
+        \n
+        
+        * Version 3.4\n
+        1) Support mutilple photos in one frame\n
+        2) Add more wonderful phote frmaes\n
+        </string>
+    <string name="about_us_info">	   
+		Androidfuture Lab. is developping funny and wonderful mobile apps for users.\n
+        \n
+        Including apps for browsing cool wallpaper, beautify your photoes by adding a 
+        wonderful frames and so on.\n
+        \n
+        You can visit our website: www.androidfuture.com, and exploring more funny apps.\n
+        Please give me your suggestion and i will work hard to make our apps better and better.</string>
+</resources>

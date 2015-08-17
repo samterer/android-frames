@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">New Year Frames</string>
+	<string name="import_photos">Import photo</string>
+	<string name="gallery">Gallery</string>
+	<string name="camera">Camera</string>
+
+	<string name="save_share">Save and Share</string>
+	<string name="set_wallpaper">Set as wallpaper</string>
+  	<string name="save_image">Save to gallery</string>
+	<string name="share_image">Share</string>
+	<string name="hint_select_photo">You have to select %1$d photo(s)</string>
+	<string name="share_title">Share to:</string>
+	<string name="share_success">Share successfully</string>
+	<string name="share_fail">Failed to share</string>
+	<string name="share_from">Share from </string>
+	<string name="setting">Settings</string>
+	<string name="feedback">Feedback</string>
+	<string name="set_feedback">Give me your suggestion</string>
+	<string name="version_info">Version 1.0</string>
+<string name="share_to_friend">Tell to your friends</string>
+<string name="share_msg">I\'m using the wonderful app: Christmas Frames,the best android app of photo frames. Download it for free&lt;/string&gt;</string>
+<string name="set_wallpaper_ok">Set as wallpaper successfully</string>
+<string name="set_wallpaper_fail">Fail to set wallpaper</string>
+<string name="ok">OK</string>
+<string name="cancel">Cancel</string>
+<string name="exit_msg">Do you want to exit?</string>
+<string name="later">Later</string>
+<string name="rating_msg">Could you support us by giving a rating?</string>
+<string name="rating_title">Rating Invitation</string>
+<string name="product_info">Christmas Frames for Free</string>
+<string name="save_image_success">Save to gallery successfully</string>
+
+<string name="tab_favorite">Favorite</string>
+<string name="tab_hot">Hottest</string>
+<string name="tab_new">Newest</string>
+<string name="tab_more">More</string>
+<string name="fail_load_frame">Fail to load frame!</string>
+<string name="clear_memory">Clear Cache</string>
+<string name="clear_memory_ing">Clearing Cache...</string>
+<string name="cleared_memory">Finish clearing cache!</string>
+<string name="set_theme">Set Theme</string>
+<string name="loading_more">Loading more...</string>
+<string name="remove_fav">Remove favorite?</string>
+<string name="add_fav">Add favorite?</string>
+<string name="loading_end">No more frames</string>
+<string name="loading_frames">Loading frames, please wait!</string>
+<string name="no_net_loading_more">No network connection, can\'t load more frames!</string>
+<string name="tab_history">History</string>
+<string name="remove_history">Remove it from history record?</string>
+<string name="download_progress">Downloading frame image</string>
+<string name="download_facebookphoto_progress">Downloading photo from Facebook</string>
+<string name="download_cancel">Cancel download!</string>
+<string name="more_app">More Apps</string>
+<string name="gen_bitmap_fail">Failed to generate Photo, you can try again</string>
+<string name="created_in">Created in </string>
+<string name="title_select_album">Select an album</string>
+<string name="title_select_photo">Select a photo</string>
+
+<string name="facebook_load_fail">Fail to load data from Facebook</string>
+<string name="facebook_auth_fail">Fail to authorize to Facebook</string>
+<string name="facebook_login_fail">Fail to login Facebook</string>
+<string name="init_text">Initializing resources, please wait...</string>
+
+<string name="lang">en</string>
+</resources>
