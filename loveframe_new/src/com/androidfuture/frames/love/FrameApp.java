@@ -1,6 +1,5 @@
 package com.androidfuture.frames.love;
 
-import android.app.Application;
 import android.content.SharedPreferences;
 import com.androidfuture.frames.AFApp;
 import com.androidfuture.frames.AFAppWrapper;
@@ -14,7 +13,7 @@ import com.androidfuture.tools.DeviceUtils;
 import java.io.File;
 import java.util.ArrayList;
 
-public class FrameApp extends Application implements AFApp {
+public class FrameApp extends AFApp {
 	public  final static String AppName = "Frames Maker for Love";
 	public  final static String AppNameNoSpace = "Love_Frames_for_Free";
 	public final static String AppId = "com.androidfuture.frames.love";

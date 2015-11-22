@@ -1,23 +1,12 @@
 package com.androidfuture.frames.ui;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-
 import com.androidfuture.cacheimage.CacheImageView;
 import com.androidfuture.data.AFCellView;
-
 import com.androidfuture.frames.R;
 import com.androidfuture.frames.data.FrameData;
 import com.androidfuture.frames.data.LocalFrameData;
@@ -49,7 +38,7 @@ public class ItemView extends AFCellView {
 
 
 @Override
-public void update(AFData data) {
+public void update(final AFData data, OnCellInnerViewClickListener listener) {
 	this.curFrame = (FrameData) data;
 	CacheImageView picView = (CacheImageView) findViewById(R.id.item_image);
 	if(data instanceof LocalFrameData)

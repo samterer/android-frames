@@ -1,9 +1,5 @@
 package com.androidfuture.photo.picker;
 
-import java.io.File;
-import java.util.Date;
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,11 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.*;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.KeyEvent;
@@ -25,20 +17,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.androidfuture.cacheimage.ImageDownloadManager;
 import com.androidfuture.data.AFPhotoData;
+import com.androidfuture.frames.AFApp;
 import com.androidfuture.frames.AFAppWrapper;
 import com.androidfuture.frames.Constants;
 import com.androidfuture.frames.R;
-import com.androidfuture.photo.picker.ChosePhotoFragment.SaveThread;
 import com.androidfuture.photo.picker.PhotoManager.OnChosePhotoChangeListener;
 import com.androidfuture.tools.AFLog;
 import com.androidfuture.tools.FileUtils;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
+import com.google.android.gms.analytics.HitBuilders;
 import com.viewpagerindicator.TitlePageIndicator;
 import com.viewpagerindicator.TitleProvider;
+
+import java.io.File;
+import java.util.Date;
+import java.util.HashMap;
 
 public class PhotoChooseActivity extends FragmentActivity implements
 		OnChosePhotoChangeListener, OnPageChangeListener {
@@ -255,10 +249,11 @@ public class PhotoChooseActivity extends FragmentActivity implements
 				Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 				return false;
 			}
-
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_PHOTO,
-							Constants.EVENT_PHOTO_CAMERA, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PHOTO)
+							.setAction(Constants.EVENT_PHOTO_CAMERA)
+							.build());
 			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 			startActivityForResult(intent, SRC_CAMERA);
 		}

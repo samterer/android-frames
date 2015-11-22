@@ -1,9 +1,5 @@
 package com.androidfuture.photo.picker;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,24 +16,21 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.androidfuture.cacheimage.ImageDownloadManager;
 import com.androidfuture.data.AFListAdapter;
 import com.androidfuture.data.AFPhotoData;
+import com.androidfuture.frames.AFApp;
 import com.androidfuture.frames.Constants;
 import com.androidfuture.frames.R;
 import com.androidfuture.photo.picker.PhotoManager.OnChosePhotoChangeListener;
 import com.androidfuture.tools.AFLog;
-import com.facebook.FacebookRequestError;
-import com.facebook.HttpMethod;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
+import com.facebook.*;
 import com.facebook.Session.StatusCallback;
-import com.facebook.SessionState;
 import com.facebook.model.GraphObject;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
+import com.google.android.gms.analytics.HitBuilders;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class FacebookPhotoSelectActivity extends FragmentActivity implements OnItemClickListener, OnChosePhotoChangeListener{
@@ -199,9 +192,12 @@ public class FacebookPhotoSelectActivity extends FragmentActivity implements OnI
 				}
 				PhotoManager.GetInstance().addPhoto(data);
 				((AFPhotoGridView) v).updateCheck(true);
-				EasyTracker.getInstance(this).send(
-						MapBuilder.createEvent(Constants.EVENT_CAT_PHOTO,
-								Constants.EVENT_PHOTO_FACEBOOK, null, null).build());
+				((AFApp)getApplication()).getDefaultTracker()
+						.send(new HitBuilders.EventBuilder()
+								.setCategory(Constants.EVENT_CAT_PHOTO)
+								.setAction(Constants.EVENT_PHOTO_FACEBOOK)
+								.build());
+
 			}
 	}
 	

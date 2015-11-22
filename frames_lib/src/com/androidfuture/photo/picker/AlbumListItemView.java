@@ -37,7 +37,7 @@ public class AlbumListItemView extends AFCellView {
 		
 
 	@Override
-	public void update(AFData data) {
+	public void update(final AFData data, OnCellInnerViewClickListener listener) {
 		AFAlbumData album = (AFAlbumData)data;	
 		TextView albumName = (TextView) findViewById(R.id.album_title);
 		albumName.setText(album.getTitle());

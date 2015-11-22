@@ -7,7 +7,7 @@ android:shareInterpolator="false"
     <translate
         android:fromXDelta="0"
         android:toXDelta="0"
-        android:fromYDelta="160"
+        android:fromYDelta="+100%"
         android:toYDelta="0"
         android:duration="500"
         

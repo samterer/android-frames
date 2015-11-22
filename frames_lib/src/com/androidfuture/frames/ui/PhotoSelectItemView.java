@@ -1,24 +1,16 @@
 package com.androidfuture.frames.ui;
 
-import com.androidfuture.cacheimage.CacheImageView;
-import com.androidfuture.data.AFCellView;
-import com.androidfuture.data.AFPhotoData;
-
-import com.androidfuture.frames.R;
-import com.androidfuture.frames.data.ThemeData;
-
-import com.androidfuture.network.AFData;
-import com.androidfuture.tools.DeviceUtils;
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.androidfuture.cacheimage.CacheImageView;
+import com.androidfuture.data.AFCellView;
+import com.androidfuture.data.AFPhotoData;
+import com.androidfuture.frames.R;
+import com.androidfuture.network.AFData;
+import com.androidfuture.tools.DeviceUtils;
 
 
 
@@ -36,7 +28,7 @@ public class PhotoSelectItemView extends AFCellView {
 		addView(layout,param);
 	}
 
-	public void update(AFData data) {
+	public void update(AFData data, OnCellInnerViewClickListener listener) {
 		AFPhotoData imageData = (AFPhotoData)data;
 		CacheImageView image = (CacheImageView)(findViewById(R.id.item_image));
 		image.setImage(imageData.getThumbUrl());

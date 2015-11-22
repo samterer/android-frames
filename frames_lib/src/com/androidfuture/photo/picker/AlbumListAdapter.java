@@ -1,14 +1,12 @@
 package com.androidfuture.photo.picker;
 
-import java.util.ArrayList;
-
-import com.androidfuture.data.AFAlbumData;
-
-
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import com.androidfuture.data.AFAlbumData;
+
+import java.util.ArrayList;
 
 public class AlbumListAdapter extends BaseAdapter {
 	private Context mContext;
@@ -48,7 +46,7 @@ public class AlbumListAdapter extends BaseAdapter {
 			itemView = (AlbumListItemView)convertView;
 			//itemView.setImage(null);
 		}
-		itemView.update(data);
+		itemView.update(data, null);
 		return itemView;
 		
 		

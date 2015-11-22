@@ -2,6 +2,13 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../common/AFLib" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../christmasframes_new" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../frames_lib" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../loveframe_new" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../res/christmasframe_res" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../thirdparty/Android-HorizontalListView/AndroidHorizontalListView" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../thirdparty/facebook-android-sdk-3.15.0/facebook" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../../thirdparty/gesture-imageview/main" vcs="svn" />
   </component>
 </project>
-

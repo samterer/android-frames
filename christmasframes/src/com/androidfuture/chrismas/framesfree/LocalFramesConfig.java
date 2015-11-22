@@ -3,48 +3,35 @@ package com.androidfuture.chrismas.framesfree;
 import com.androidfuture.frames.data.Categery;
 import com.androidfuture.frames.data.FrameCell;
 import com.androidfuture.frames.data.LocalFrameData;
-import com.androidfuture.chrismas.framesfree.R;
 
 public class LocalFramesConfig {
 
 	public final static LocalFrameData LocalFrames[] = {
-			new LocalFrameData(
-					610143,
-					Categery.CHRISTMAS,
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/frame_6599.png",
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/th_frame_6599.png",
-					R.drawable.frame_610143, R.drawable.th_frame_610143),
+
 
 			new LocalFrameData(
 					6615,
 					Categery.CHRISTMAS,
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/frame_6599.png",
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/th_frame_6599.png",
+					"",
+					"",
 					R.drawable.frame_6615, R.drawable.th_frame_6615),
-
 			new LocalFrameData(
-					6130028,
+					60127,
 					Categery.CHRISTMAS,
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/frame_6599.png",
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/th_frame_6599.png",
-					R.drawable.frame_6130028, R.drawable.th_frame_6130028),
-			new LocalFrameData(
-					61008,
-					Categery.CHRISTMAS,
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/frame_6599.png",
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/th_frame_6599.png",
-					R.drawable.frame_61008, R.drawable.th_frame_61008),
+					"",
+					"",
+					R.drawable.frame_60127, R.drawable.th_frame_60127),
 			new LocalFrameData(
 					610122,
 					Categery.CHRISTMAS,
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/frame_2128.png",
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/th_frame_2128.png",
+					"",
+					"",
 					R.drawable.frame_610122, R.drawable.th_frame_610122),
 			new LocalFrameData(
 					670808,
 					Categery.CHRISTMAS,
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/frame_3504.png",
-					"http://i1249.photobucket.com/albums/hh502/frames_android/CHRISTMAS%20frames/th_frame_3504.png",
+					"",
+					"",
 					R.drawable.frame_670808, R.drawable.th_frame_670808),
 
 			new LocalFrameData(

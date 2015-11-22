@@ -1,22 +1,16 @@
 package com.androidfuture.photo.picker;
 
-import android.app.Activity;
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
-
 import com.androidfuture.cacheimage.CacheImageView;
 import com.androidfuture.cacheimage.CacheThumbImageView;
 import com.androidfuture.data.AFCellView;
 import com.androidfuture.data.AFPhotoData;
 import com.androidfuture.frames.R;
-
 import com.androidfuture.network.AFData;
-import com.androidfuture.tools.DeviceUtils;
 import com.androidfuture.tools.WWScreenUtils;
 
 public class AFPhotoChoseGridView extends AFCellView {
@@ -31,7 +25,7 @@ public class AFPhotoChoseGridView extends AFCellView {
 	}
 
 	@Override
-	public void update(final AFData data) {
+	public void update(final AFData data, OnCellInnerViewClickListener listener) {
 		// TODO Auto-generated method stub
 		AFPhotoData appData = (AFPhotoData) data;
 		CacheThumbImageView view = (CacheThumbImageView) findViewById(R.id.photo_grid_cell_image);

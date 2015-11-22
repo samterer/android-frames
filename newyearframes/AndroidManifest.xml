@@ -1,38 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.androidfuture.newyear.framesfree"
-    android:versionCode="1"
-	android:versionName="1.0"
-    android:installLocation="preferExternal"
->
+          package="com.androidfuture.frames.newyear"
+          android:versionCode="1"
+          android:versionName="1.0"
+          android:installLocation="preferExternal"
+        >
 
-    <uses-sdk android:minSdkVersion="7" />
+
+    <uses-sdk
+            android:minSdkVersion="8"
+            android:targetSdkVersion="10"/>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <application
-        android:icon="@drawable/icon_launch"
-        android:label="@string/app_name" android:name=".FrameApp">
-        <activity
+            android:icon="@drawable/icon_launch"
             android:label="@string/app_name"
-            android:name="com.androidfuture.frames.ui.ProcessActivity" >
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".FrameApp"
+            android:allowBackup="true"
+            android:largeHeap="true"
+            android:theme="@style/AppTheme">
+        >
+        <activity android:name="SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        
-            <activity android:name="com.appdao.android.feedback.FeedBack"></activity>
- 		<activity android:name="com.google.ads.AdActivity"
-        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>  <activity android:name="com.androidfuture.frames.ui.SetActivity"></activity>
-  <activity android:name="com.androidfuture.frames.ui.PreviewActivity"></activity>
-  <activity android:name="com.androidfuture.facebook.PhotoActivity"></activity>
-  <activity android:name="com.androidfuture.facebook.PhotoExplore"></activity>
-  <activity android:name="com.androidfuture.facebook.PhotoSelectActivity"></activity>
+        <activity
+                android:name="com.appdao.android.feedback.FeedBack"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.google.android.gms.ads.AdActivity"
+                android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+        <activity
+                android:name="com.androidfuture.set.SetActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.androidfuture.set.AboutUsActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.androidfuture.set.VersionInfoActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.androidfuture.frames.ui.PreviewActivity"
+                android:screenOrientation="portrait">
+        </activity>
 
-</application>
+        <activity
+                android:name="com.androidfuture.frames.ui.FrameChooseActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.androidfuture.frames.ui.ProcessActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.FacebookAlbumFragment">
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.FacebookPhotoSelectActivity">
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.PhonePhotoAlbumFragment">
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.PhonePhotoSelectActivity">
+        </activity>
+        <activity android:name="com.androidfuture.photo.picker.PhotoChooseActivity">
+        </activity>
+
+        <activity android:name="com.facebook.LoginActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:label="@string/app_name"/>
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+
+    </application>
 </manifest>

@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
+import com.androidfuture.frames.AFApp;
 import com.androidfuture.frames.AFAppWrapper;
 import com.androidfuture.frames.R;
 import com.androidfuture.frames.service.FrameManager;
@@ -30,7 +31,8 @@ import com.androidfuture.frames.tools.ImageStore;
 import com.androidfuture.set.SetActivity;
 import com.androidfuture.tools.AFLog;
 import com.androidfuture.tools.WWScreenUtils;
-import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.polites.android.GestureImageView;
 
 import java.io.*;
@@ -123,13 +125,13 @@ public class PreviewActivity extends Activity implements OnClickListener {
 			adView.loadAd(adRequest);
 		}
 		*/
-		
-		EasyTracker.getInstance(this).activityStart(this);
+		Tracker tracker = ((AFApp)getApplication()).getDefaultTracker();
+		tracker.setScreenName(getClass().getName());
+		tracker.send(new HitBuilders.ScreenViewBuilder().build());
 	}
 
 	@Override
 	protected void onStop() {
-		EasyTracker.getInstance(this).activityStop(this);
 		super.onStop();
 	}
 

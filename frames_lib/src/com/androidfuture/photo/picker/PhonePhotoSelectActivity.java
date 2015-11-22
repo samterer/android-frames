@@ -1,22 +1,6 @@
 package com.androidfuture.photo.picker;
 
-import java.util.ArrayList;
-
-import com.androidfuture.data.AFListAdapter;
-import com.androidfuture.data.AFPhotoData;
-import com.androidfuture.frames.Constants;
-import com.androidfuture.frames.R;
-import com.androidfuture.network.AFData;
-import com.androidfuture.photo.picker.PhotoManager.OnChosePhotoChangeListener;
-import com.androidfuture.tools.MediaUtils;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
-
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,9 +13,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.Toast;
+import com.androidfuture.data.AFListAdapter;
+import com.androidfuture.data.AFPhotoData;
+import com.androidfuture.frames.AFApp;
+import com.androidfuture.frames.Constants;
+import com.androidfuture.frames.R;
+import com.androidfuture.network.AFData;
+import com.androidfuture.photo.picker.PhotoManager.OnChosePhotoChangeListener;
+import com.androidfuture.tools.MediaUtils;
+import com.google.android.gms.analytics.HitBuilders;
+
+import java.util.ArrayList;
 
 
 public class PhonePhotoSelectActivity extends FragmentActivity implements
@@ -109,10 +104,11 @@ public class PhonePhotoSelectActivity extends FragmentActivity implements
 			}
 			PhotoManager.GetInstance().addPhoto(data);
 			((AFPhotoGridView) v).updateCheck(true);
-			
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_PHOTO,
-							Constants.EVENT_PHOTO_PHONE, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PHOTO)
+							.setAction(Constants.EVENT_PHOTO_PHONE)
+							.build());
 		}
 		// this.photoListAdapter.notifyDataSetChanged();
 

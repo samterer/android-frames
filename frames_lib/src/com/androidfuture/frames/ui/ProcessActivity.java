@@ -25,6 +25,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.androidfuture.cacheimage.Picture;
 import com.androidfuture.data.AFPhotoData;
+import com.androidfuture.frames.AFApp;
 import com.androidfuture.frames.AFAppWrapper;
 import com.androidfuture.frames.Constants;
 import com.androidfuture.frames.R;
@@ -39,8 +40,8 @@ import com.androidfuture.statistic.PopService;
 import com.androidfuture.tools.AFLog;
 import com.androidfuture.tools.StatisticTool;
 import com.androidfuture.tools.StringUtils;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -169,12 +170,14 @@ public class ProcessActivity extends FragmentActivity implements
 			adView.loadAd(adRequest);
 		}
 
-
+		*/
 		LinearLayout adLayout = (LinearLayout) findViewById(R.id.adlayout);
-		
+		adLayout.setVisibility(View.GONE);
+		/*
 		adLayout.setBackgroundColor(getResources().getColor(R.color.ad_bg));
 		LinearLayout.LayoutParams layoutParam = new android.widget.LinearLayout.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT);
+
 		layoutParam.gravity = Gravity.CENTER;
 		adLayout.addView(adView, layoutParam);
         */
@@ -188,12 +191,14 @@ public class ProcessActivity extends FragmentActivity implements
 		findViewById(R.id.main_footer_bar).bringToFront();
 
 		AFLog.d("after pop");
-		
-		EasyTracker.getInstance(this).activityStart(this);
+
+		Tracker tracker = ((AFApp)getApplication()).getDefaultTracker();
+		tracker.setScreenName(getClass().getName());
+		tracker.send(new HitBuilders.ScreenViewBuilder().build());
 	}
 	@Override
 	protected void onStop() {
-		EasyTracker.getInstance(this).activityStop(this);
+
 		super.onStop();
 	}
 	@Override
@@ -286,9 +291,12 @@ public class ProcessActivity extends FragmentActivity implements
 
 			if (!isFilterShow) {
 				showFilter();
-				EasyTracker.getInstance(this).send(
-						MapBuilder.createEvent(Constants.EVENT_CAT_PROCESS,
-								Constants.EVENT_PROCESS_OPEN_FILTER, null, null).build());
+				((AFApp)getApplication()).getDefaultTracker()
+						.send(new HitBuilders.EventBuilder()
+								.setCategory(Constants.EVENT_CAT_PROCESS)
+								.setAction(Constants.EVENT_PROCESS_OPEN_FILTER)
+								.build());
+
 			} else {
 				hideFilter();
 			}
@@ -299,15 +307,20 @@ public class ProcessActivity extends FragmentActivity implements
 			intent.putExtra("switch", true);
 			intent.setClass(this, FrameChooseActivity.class);
 			startActivityForResult(intent, FRAME);
-			EasyTracker.getInstance(this).send(
-			MapBuilder.createEvent(Constants.EVENT_CAT_PROCESS,
-					Constants.EVENT_FRAME_SWITCH, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PROCESS)
+							.setAction(Constants.EVENT_FRAME_SWITCH)
+							.build());
 		}else if (v.getId() == R.id.process_add)
 		{
 			addPhoto();
-			EasyTracker.getInstance(this).send(
-			MapBuilder.createEvent(Constants.EVENT_CAT_PROCESS,
-					Constants.EVENT_PROCESS_ADD_PHOTO, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PROCESS)
+							.setAction(Constants.EVENT_PROCESS_ADD_PHOTO)
+							.build());
+
 		}
 		else if (v.getId() == R.id.process_rotate) {
 			if (findViewById(R.id.rotate_wrap).getVisibility() == View.GONE) {
@@ -315,19 +328,26 @@ public class ProcessActivity extends FragmentActivity implements
 			} else {
 				findViewById(R.id.rotate_wrap).setVisibility(View.GONE);
 			}
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_PROCESS,
-							Constants.EVENT_PROCESS_OPEN_ROTATE, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PROCESS)
+							.setAction(Constants.EVENT_PROCESS_OPEN_ROTATE)
+							.build());
+
 		} else if (v.getId() == R.id.rotate_left) {
 			canvasView.rotate(-10);
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_PROCESS,
-							Constants.EVENT_PROCESS_ROTATE, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PROCESS)
+							.setAction(Constants.EVENT_PROCESS_ROTATE)
+							.build());
 		} else if (v.getId() == R.id.rotate_right) {
 			canvasView.rotate(10);
-			EasyTracker.getInstance(this).send(
-			MapBuilder.createEvent(Constants.EVENT_CAT_PROCESS,
-					Constants.EVENT_PROCESS_ROTATE, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PROCESS)
+							.setAction(Constants.EVENT_PROCESS_ROTATE)
+							.build());
 		}
 	}
 
@@ -787,9 +807,12 @@ public class ProcessActivity extends FragmentActivity implements
 								return;
 							} else {
 								canvasView.setFilter(position);
-								EasyTracker.getInstance(ProcessActivity.this).send(
-										MapBuilder.createEvent(Constants.EVENT_CAT_PROCESS,
-												Constants.EVENT_PROCESS_FILTER, null, null).build());
+								((AFApp)getApplication()).getDefaultTracker()
+										.send(new HitBuilders.EventBuilder()
+												.setCategory(Constants.EVENT_CAT_PROCESS)
+												.setAction(Constants.EVENT_PROCESS_FILTER)
+												.setLabel("Filter:" + position)
+												.build());
 							}
 						}
 					}

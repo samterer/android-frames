@@ -1,25 +1,8 @@
 package com.androidfuture.frames.ui;
 
 /**
- * Ìá¹©Ò»¸öViewÀ´¹ÜÀíÏà¿ò
+ * ï¿½á¹©Ò»ï¿½ï¿½Viewï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
-import com.androidfuture.cacheimage.Picture;
-import com.androidfuture.data.AFPhotoData;
-import com.androidfuture.frames.R;
-import com.androidfuture.frames.data.FrameCell;
-import com.androidfuture.frames.data.FrameData;
-import com.androidfuture.frames.service.FilterManager;
-import com.androidfuture.imagefilter.IImageFilter;
-import com.androidfuture.imagefilter.Image;
-
-import com.androidfuture.photo.picker.PhotoManager;
-import com.androidfuture.tools.AFLog;
-import com.androidfuture.tools.DeviceUtils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,13 +16,27 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
+import com.androidfuture.cacheimage.Picture;
+import com.androidfuture.data.AFPhotoData;
+import com.androidfuture.frames.R;
+import com.androidfuture.frames.data.FrameCell;
+import com.androidfuture.frames.data.FrameData;
+import com.androidfuture.frames.service.FilterManager;
+import com.androidfuture.imagefilter.IImageFilter;
+import com.androidfuture.imagefilter.Image;
+import com.androidfuture.photo.picker.PhotoManager;
+import com.androidfuture.tools.AFLog;
+import com.androidfuture.tools.DeviceUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class AFFrameView extends RelativeLayout implements OnTouchListener {
 
@@ -89,10 +86,10 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 
 	private ArrayList<ProgressBar> progressViews;
 
-	static final int NONE = 0;// ³õÊ¼×´Ì¬
-	static final int DRAG = 1;// ÍÏ¶¯
-	static final int ZOOM = 2;// Ëõ·Å
-	static final int ROTATE = 3;// Ðý×ª
+	static final int NONE = 0;//
+	static final int DRAG = 1;//
+	static final int ZOOM = 2;//
+	static final int ROTATE = 3;
 
 	int mode = NONE;
 
@@ -102,7 +99,7 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		frameCellViews = new ArrayList<ImageView>();
 		frameCellLayouts = new ArrayList<RelativeLayout>();
 		progressViews = new ArrayList<ProgressBar>();
-		computeBound();
+
 	}
 
 	public AFFrameView(Context context, AttributeSet attrs) {
@@ -112,11 +109,77 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		frameCellLayouts = new ArrayList<RelativeLayout>();
 		progressViews = new ArrayList<ProgressBar>();
 		setOnTouchListener(this);
-		
-		computeBound();
-	}
 
-	public void setFrameData(FrameData newFrameData) {
+	}
+    /*
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+        computeBound();
+        layoutView();
+        setMeasuredDimension((int) frameWidth, (int) frameHeight);
+        measureChildren((int) frameWidth, (int) frameHeight);
+    }
+    */
+    private void addLayout() {
+        this.removeAllViews();
+        // photosNum =0;
+
+        if (frameImageView == null) {
+            frameImageView = new ImageView(this.getContext());
+            // frameImageView.setOnTouchListener( this);
+            frameImageView.setScaleType(ScaleType.FIT_XY);
+            frameImageView.setDrawingCacheEnabled(false);
+        }
+
+        AFLog.i("before set frame image view, Memory Used::"
+                + (int) (Debug.getNativeHeapAllocatedSize() / 1048576L));
+        frameImageView.setImageBitmap(frameBitmap);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(100, 100);
+
+        frameCellLayouts.clear();
+        frameCellViews.clear();
+        progressViews.clear();
+
+        for (int i = 0; i < frameData.getmFrameCells().length; i++) {
+            RelativeLayout newFrameLayout = new RelativeLayout(this.getContext());
+            frameCellLayouts.add(newFrameLayout);
+
+            ImageView newImageView = new ImageView(this.getContext());
+            newImageView.setScaleType(ScaleType.FIT_XY);
+            newImageView.setDrawingCacheEnabled(false);
+            newImageView.setBackgroundColor(Color.TRANSPARENT);
+            newFrameLayout.addView(newImageView);
+            frameCellViews.add(newImageView);
+
+            int size = 48;
+
+            ProgressBar progress = new ProgressBar(this.getContext(), null,
+                    android.R.attr.progressBarStyleSmall);
+            RelativeLayout.LayoutParams proParams = new RelativeLayout.LayoutParams(
+                    size, size);
+            // AFLog.d("left: " + (newFrameLayout.getLayoutParams().width / 2 - size
+            proParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+            progress.setVisibility(View.INVISIBLE);
+            progressViews.add(progress);
+            newFrameLayout.addView(progress, proParams);
+
+            this.addView(newFrameLayout);
+        }
+        this.addView(frameImageView, layoutParams);
+
+
+    }
+
+
+    @Override
+    protected void onMeasure(int width, int height) {
+        computeBound();
+        layoutView();
+        super.onMeasure(width, height);
+    }
+
+    public void setFrameData(FrameData newFrameData) {
 
 		FrameData oldData = frameData;
 		frameData = newFrameData;
@@ -128,15 +191,13 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 				System.gc();
 			}
 			BitmapFactory.Options options = new BitmapFactory.Options();
-			options.inSampleSize = 2;
+			options.inSampleSize = 1;
 			options.inScaled = false;
 			frameBitmap = BitmapFactory.decodeResource(this.getResources(),
 					frameData.getRes(), options);
 
-			AFLog.i("after decode res, Memory Used::"
-					+ (int) (Debug.getNativeHeapAllocatedSize() / 1048576L));
-
-			layoutView();
+            AFLog.i("after decode res, Memory Used::"
+                    + (int) (Debug.getNativeHeapAllocatedSize() / 1048576L));
 		} else {
 			if (frameBitmap != null && !frameBitmap.isRecycled()) {
 				frameBitmap.recycle();
@@ -144,10 +205,12 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 				System.gc();
 			}
 			frameBitmap = frameData.getFrameBitmap();
-			layoutView();
 		}
+
+        addLayout();
+
 		curSelect = -1;
-		setSelect(0);
+		///setSelect(0);
 		if (oldData != null && frameData != null) {
 			int i = 0;
 			for (; i < frameData.getmFrameCells().length
@@ -174,6 +237,7 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		{
 			this.setPhotos(PhotoManager.GetInstance().GetSelected());
 		}
+        this.invalidate();
 	}
 
 	public void initTasks() {
@@ -195,35 +259,15 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 	}
 
 	public void layoutView() {
-		this.removeAllViews();
-		layoutFrameImage();
-		frameCellLayouts.clear();
-		frameCellViews.clear();
 
+		layoutFrameImage();
 		for (int i = 0; i < frameData.getmFrameCells().length; i++) {
 			layoutFrameCellView(i);
 		}
-
-		frameImageView.bringToFront();
-
-		setSelect(0);
+		//setSelect(0);
 	}
 
 	private void layoutFrameImage() {
-
-		// photosNum =0;
-
-		if (frameImageView == null) {
-			frameImageView = new ImageView(this.getContext());
-			// frameImageView.setOnTouchListener( this);
-			frameImageView.setScaleType(ScaleType.FIT_XY);
-			frameImageView.setDrawingCacheEnabled(false);
-		}
-
-		AFLog.i("before set frame image view, Memory Used::"
-				+ (int) (Debug.getNativeHeapAllocatedSize() / 1048576L));
-		
-		frameImageView.setImageBitmap(frameBitmap);
 		if (frameBitmap == null)
 			return;
 		frameOrigWidth = frameBitmap.getWidth();
@@ -238,77 +282,41 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		}
 
 		AFLog.d("frame width:" + frameWidth + " frame height: " + frameHeight);
-		RelativeLayout.LayoutParams frameParams = new RelativeLayout.LayoutParams(
-				(int) frameWidth, (int) frameHeight);
+		RelativeLayout.LayoutParams frameParams = (LayoutParams) frameImageView.getLayoutParams();
+        frameParams.width = (int) frameWidth;
+        frameParams.height = (int) frameHeight;
 		
-		frameParams.leftMargin = (int) (maxWidth / 2 - frameWidth / 2);
-		frameParams.topMargin = (int) (maxHeight / 2 - frameHeight / 2);
-		frameParams.rightMargin = (int) (maxWidth / 2 - frameWidth / 2);
-		//frameParams.bottomMargin = (int) (maxHeight / 2 - frameHeight / 2);
-		this.addView(frameImageView, frameParams);
-		
-		ImageView bg = new ImageView(this.getContext());
-		bg.setBackgroundDrawable(getContext().getResources()
-				.getDrawable(R.drawable.image_default));
-		//bg.setBackgroundColor(Color.GRAY);
-		this.addView(bg, frameParams);
-		
-		
-		frameData.setFrameWidth((int) frameOrigWidth * 2);
-		frameData.setFrameHeight((int) frameOrigHeight * 2);
+		frameParams.leftMargin = 0;
+		frameParams.topMargin =  0;
+		//frameParams.rightMargin = (int) (maxWidth / 2 - frameWidth / 2);
 
+        frameData.setFrameWidth((int) frameOrigWidth * 2);
+        frameData.setFrameHeight((int) frameOrigHeight * 2);
 		AFLog.d("frame size: " + frameOrigWidth + ":" + frameOrigHeight);
 	}
 
 	private void layoutFrameCellView(int index) {
 		FrameCell cell = frameData.getmFrameCells()[index];
-		RelativeLayout newFrameLayout = new RelativeLayout(this.getContext());
 
-		newFrameLayout.setBackgroundColor(Color.TRANSPARENT);
-
-		RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(
-				(int) (frameWidth * cell.getWidthRate()),
-				(int) (frameHeight * cell.getHeightRate()));
-		params2.leftMargin = (int) ((maxWidth - frameWidth) / 2 + frameWidth
+        RelativeLayout newFrameLayout = frameCellLayouts.get(index);
+		RelativeLayout.LayoutParams params2 = (LayoutParams) newFrameLayout.getLayoutParams();
+        params2.width = (int) (frameWidth * cell.getWidthRate());
+        params2.height = (int) (frameHeight * cell.getHeightRate());
+		params2.leftMargin =  (int)(frameWidth
 				* cell.getLeftRate());
-		params2.topMargin = (int) ((maxHeight - frameHeight) / 2 + frameHeight
-				* cell.getTopRate());
-		newFrameLayout.setLayoutParams(params2);
-		frameCellLayouts.add(newFrameLayout);
-		newFrameLayout.setBackgroundColor(Color.TRANSPARENT);
-		this.addView(newFrameLayout);
-		this.invalidate();
-		AFLog.d("cell layout :" + index + "left: " + params2.leftMargin
-				+ " top: " + params2.topMargin + " width:" + params2.width
+		params2.topMargin =  (int)(frameHeight
+                * cell.getTopRate());
+        //newFrameLayout.setBackgroundColor(Color.RED);
+
+        AFLog.d("cell layout :" + index + "left: " + params2.leftMargin
+                + " top: " + params2.topMargin + " width:" + params2.width
 				+ "height:" + params2.height);
-
-		ImageView newImageView = null;
-		newImageView = new ImageView(this.getContext());
+        /*
+		ImageView newImageView = new ImageView(this.getContext());
 		newImageView.setScaleType(ScaleType.FIT_XY);
-
-		// curImageView.setOnTouchListener(this);
-
-		newImageView.setDrawingCacheEnabled(false);
-
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(0,
-				0);
-
-		params.width = (int) (cell.initWidth * cell.rate + 0.5);
-		params.height = (int) (cell.initHeight * cell.rate + 0.5);
-		params.leftMargin = (int) (cell.xCenter - cell.initWidth * cell.rate
-				/ 2 + 0.5);
-		params.topMargin = (int) (cell.yCenter - cell.initHeight * cell.rate
-				/ 2 + 0.5);
-		params.rightMargin = (int) (frameWidth * cell.getWidthRate()
-				- cell.xCenter - cell.initWidth * cell.rate / 2 + 0.5);
-		params.bottomMargin = (int) (frameHeight * cell.getHeightRate()
-				- cell.yCenter - cell.initHeight * cell.rate / 2 + 0.5);
-
-		newImageView.setLayoutParams(params);
-		newImageView.setBackgroundColor(Color.TRANSPARENT);
-		newFrameLayout.addView(newImageView, params);
-		newImageView.invalidate();
-
+        newImageView.setDrawingCacheEnabled(false);
+        newImageView.setBackgroundColor(Color.TRANSPARENT);
+		this.addView(newImageView);
 		frameCellViews.add(newImageView);
 		int size = 48;
 		ProgressBar progress = new ProgressBar(this.getContext(), null,
@@ -319,15 +327,15 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		// AFLog.d("left: " + (newFrameLayout.getLayoutParams().width / 2 - size
 		// / 2));
 		proParams.setMargins(newFrameLayout.getLayoutParams().width / 2 - size
-				/ 2, newFrameLayout.getLayoutParams().height / 2 - size / 2,
-				newFrameLayout.getLayoutParams().width / 2 - size / 2,
-				newFrameLayout.getLayoutParams().height / 2 - size / 2);
+                        / 2, newFrameLayout.getLayoutParams().height / 2 - size / 2,
+                newFrameLayout.getLayoutParams().width / 2 - size / 2,
+                newFrameLayout.getLayoutParams().height / 2 - size / 2);
 
-		progress.setVisibility(View.INVISIBLE);
-		progressViews.add(progress);
-		newFrameLayout.addView(progress, proParams);
-
-		this.invalidate();
+        progress.setVisibility(View.INVISIBLE);
+        progressViews.add(progress);
+        newFrameLayout.addView(progress, proParams);
+        */
+        //this.invalidate();
 
 	}
 
@@ -336,39 +344,13 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		DisplayMetrics metric = new DisplayMetrics();
 		((Activity) this.getContext()).getWindowManager().getDefaultDisplay()
 				.getMetrics(metric);
-		int sreenWidth = metric.widthPixels;
-		int sreenHeight = metric.heightPixels;
+
 		float density = metric.density;
-		float headBarHeight = 50 * density;
-		float footerBarHeight = 50 * density;
-		float adBarHeight = 48 * density;
-		float padding = 12 * density;
-
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		((WindowManager) ((Activity) this.getContext())
-				.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
-				.getMetrics(displayMetrics);
-
-		int statusBarHeight;
-
-		switch (displayMetrics.densityDpi) {
-		case DisplayMetrics.DENSITY_HIGH:
-			statusBarHeight = HIGH_DPI_STATUS_BAR_HEIGHT;
-			break;
-		case DisplayMetrics.DENSITY_MEDIUM:
-			statusBarHeight = MEDIUM_DPI_STATUS_BAR_HEIGHT;
-			break;
-		case DisplayMetrics.DENSITY_LOW:
-			statusBarHeight = LOW_DPI_STATUS_BAR_HEIGHT;
-			break;
-		default:
-			statusBarHeight = MEDIUM_DPI_STATUS_BAR_HEIGHT;
-		}
-		
-		maxWidth = sreenWidth - 2 * padding;
-		maxHeight = (int) (sreenHeight - headBarHeight - footerBarHeight - statusBarHeight - adBarHeight - 2 * padding);
-		AFLog.d("Max Width:" + maxWidth + "Heihgt:" + maxHeight);
-		AFLog.d("layout width:" + this.getWidth() + " layout height: " + this.getHeight());
+		float padding = 24 * density;
+        maxWidth = ((View)this.getParent()).getWidth() - 2 * padding;
+		maxHeight = ((View)this.getParent()).getHeight() - 2 * padding;
+        AFLog.d("Max Width:" + maxWidth + "Heihgt:" + maxHeight);
+        AFLog.d("layout width:" + this.getWidth() + " layout height: " + this.getHeight());
 	}
 	
 	public void setPhoto(int index, String str) {
@@ -407,7 +389,7 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 	}
 
 	public void setPhotoBitmap(Bitmap photoBitmap) {
-		setPhotoBitmap(curSelect, photoBitmap);
+        setPhotoBitmap(curSelect, photoBitmap);
 	}
 
 	private void setPhotoBitmap(int index, Bitmap photoBitmap) {
@@ -420,9 +402,9 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		cell.origHeight = photoBitmap.getHeight();
 		cell.rate = 1.0f;
 
-		AFLog.d("origWidth: origWidth: " + cell.origWidth + "origHeight: "
-				+ cell.origHeight + " frameWidth: " + frameWidth
-				+ " frameHeight: " + frameHeight);
+        AFLog.d("origWidth: origWidth: " + cell.origWidth + "origHeight: "
+                + cell.origHeight + " frameWidth: " + frameWidth
+                + " frameHeight: " + frameHeight);
 
 		float cellFrameWidth = frameWidth * cell.getWidthRate();
 		float cellFrameHeight = frameHeight * cell.getHeightRate();
@@ -433,20 +415,7 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 			cell.initHeight = cellFrameHeight;
 			cell.initWidth = cell.origWidth * cell.initHeight / cell.origHeight;
 		}
-		/*
-		if ( cell.initHeight  > 640)
-		{
-			float tmp = cell.initHeight;
-			cell.initHeight = 640;
-			cell.initWidth = 640 * cell.initWidth / cell.initHeight;
-		}else if (cell.initWidth > 640)
-		{
-			float tmp = cell.initWidth;
-			cell.initWidth = 640;
-			cell.initHeight = 640 * cell.initHeight / cell.initWidth;
-		}
-		*/
-		
+
 		cell.curWidth = cell.initWidth;
 		cell.curHeight = cell.initHeight;
 		AFLog.d("cell width:" + cell.initWidth + " heihgt:" + cell.initHeight);
@@ -494,11 +463,11 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 		params.bottomMargin = (int) (height - cell.yCenter - viewHeight / 2 + 0.5);
 
 		cellImage.setLayoutParams(params);
-		cellImage.invalidate();
-		AFLog.d("Update cell view:" + cellImage + " width" + params.width
-				+ " heihgt: " + params.height + ":" + params.leftMargin + ":"
-				+ params.topMargin);
 
+        AFLog.d("Update cell view:" + cellImage + " width" + params.width
+                + " heihgt: " + params.height + ":" + params.leftMargin + ":"
+                + params.topMargin);
+        this.invalidate();
 	}
 
 	public void adjustPosition(int deltaX, int deltaY) {
@@ -514,7 +483,7 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 			return;
 		}
 		frameData.getmFrameCells()[curSelect].adjustSize(rate);
-		updateCellView(curSelect);
+        updateCellView(curSelect);
 	}
 
 	public void rotate(int angleStep) {
@@ -621,7 +590,7 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 	}
 
 	void updateCurSelect() {
-		updateCellView(curSelect);
+        updateCellView(curSelect);
 	}
 
 	void setSelect(int select) {
@@ -714,14 +683,14 @@ public class AFFrameView extends RelativeLayout implements OnTouchListener {
 				float dist_x = event.getX(0) - event.getX(1);
 				float dist_y = event.getY(0) - event.getY(1);
 				float value = (float) Math.sqrt(dist_x * dist_x + dist_y
-						* dist_y);// ¼ÆËãÁ½µãµÄ¾àÀë
+						* dist_y);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
 				if (baseValue == 0) {
 					baseValue = value;
 				} else {
 					if (value - baseValue >= 5 || value - baseValue <= -5) {
 						float scale = (1 + (value - baseValue) / baseValue)
-								* getSelectScale();// µ±Ç°Á½µã¼äµÄ¾àÀë³ýÒÔÊÖÖ¸ÂäÏÂÊ±Á½µã¼äµÄ¾àÀë¾ÍÊÇÐèÒªËõ·ÅµÄ±ÈÀý¡£
-						resize(scale); // Ëõ·ÅÍ¼Æ¬
+								* getSelectScale();// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ÅµÄ±ï¿½ï¿½ï¿½
+						resize(scale); // ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
 						baseValue = value;
 					}
 				}

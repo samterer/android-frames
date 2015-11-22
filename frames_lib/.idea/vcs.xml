@@ -4,6 +4,9 @@
     <mapping directory="" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../christmasframes" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/../loveframe_new" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../newyearframes" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../res/christmasframe_res" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../res/loveframe_res" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/../res/newyearframe_res" vcs="svn" />
   </component>
 </project>
-

@@ -2,14 +2,13 @@ package com.androidfuture.frames.data;
 
 
 
-import java.util.ArrayList;
-
-import com.androidfuture.frames.ui.ItemView;
-
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import com.androidfuture.frames.ui.ItemView;
+
+import java.util.ArrayList;
 
 
 public class NewListItemAdapter extends BaseAdapter{
@@ -51,7 +50,7 @@ public class NewListItemAdapter extends BaseAdapter{
 		}
 		
 		
-		itemView.update(picNews);
+		itemView.update(picNews, null);
 		return itemView;
 	}
 

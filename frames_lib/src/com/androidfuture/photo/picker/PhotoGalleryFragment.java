@@ -1,59 +1,31 @@
 package com.androidfuture.photo.picker;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.net.Uri;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import com.androidfuture.data.AFListAdapter;
-import com.androidfuture.data.AFPhotoData;
-import com.androidfuture.frames.Constants;
-import com.androidfuture.frames.R;
-import com.androidfuture.frames.ui.FramesAppFragment;
-import com.androidfuture.frames.ui.MoreFramesAppItemView;
-import com.androidfuture.network.AFData;
-import com.androidfuture.photo.picker.PhotoManager.OnChosePhotoChangeListener;
-import com.androidfuture.tools.AFLog;
-import com.androidfuture.tools.FileUtils;
-import com.androidfuture.tools.MediaUtils;
-import com.androidfuture.tools.StringUtils;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
-
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-
-import android.database.Cursor;
-import android.graphics.Bitmap;
-
-import android.os.AsyncTask;
-
 import android.provider.MediaStore;
-import android.provider.MediaStore.Images.ImageColumns;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+import com.androidfuture.data.AFListAdapter;
+import com.androidfuture.data.AFPhotoData;
+import com.androidfuture.frames.AFApp;
+import com.androidfuture.frames.Constants;
+import com.androidfuture.frames.R;
+import com.androidfuture.network.AFData;
+import com.androidfuture.photo.picker.PhotoManager.OnChosePhotoChangeListener;
+import com.androidfuture.tools.MediaUtils;
+import com.google.android.gms.analytics.HitBuilders;
+
+import java.util.ArrayList;
 
 public class PhotoGalleryFragment extends Fragment implements
 		OnItemClickListener, OnChosePhotoChangeListener, OnClickListener {
@@ -161,10 +133,11 @@ public class PhotoGalleryFragment extends Fragment implements
 			}
 			PhotoManager.GetInstance().addPhoto(data);
 			((AFPhotoGridView) v).updateCheck(true);
-
-			EasyTracker.getInstance(getActivity()).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_PHOTO,
-							Constants.EVENT_PHOTO_GALLARY, null, null).build());
+			((AFApp)getActivity().getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_PHOTO)
+							.setAction(Constants.EVENT_PHOTO_GALLARY)
+							.build());
 		}
 		// this.photoListAdapter.notifyDataSetChanged();
 

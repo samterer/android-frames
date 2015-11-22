@@ -31,6 +31,6 @@
     <orderEntry type="module" module-name="AndroidHorizontalListView" />
     <orderEntry type="module" module-name="AFLib" exported="" />
     <orderEntry type="module" module-name="facebook" />
+    <orderEntry type="module" module-name="christmasframe_res" exported="" />
   </component>
 </module>
-

@@ -1,20 +1,14 @@
 package com.androidfuture.photo.picker;
 
+import android.content.Context;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
 import com.androidfuture.cacheimage.CacheImageView;
 import com.androidfuture.data.AFAlbumData;
 import com.androidfuture.data.AFPhotoData;
 import com.androidfuture.frames.R;
 import com.androidfuture.network.AFData;
-import com.facebook.HttpMethod;
-import com.facebook.Request;
-import com.facebook.Response;
 import com.facebook.Session;
-import com.facebook.model.GraphObject;
-
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.ImageView.ScaleType;
 
 public class FacebookAlbumListItemView extends AlbumListItemView {
 
@@ -24,7 +18,7 @@ public class FacebookAlbumListItemView extends AlbumListItemView {
 	}
 
 	@Override
-	public void update(AFData data) {
+	public void update(final AFData data, OnCellInnerViewClickListener listener) {
 		final AFAlbumData album = (AFAlbumData)data;	
 		TextView albumName = (TextView) findViewById(R.id.album_title);
 		albumName.setText(album.getTitle());

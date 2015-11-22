@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../common/AFLib/AFLib.iml" filepath="$PROJECT_DIR$/../../common/AFLib/AFLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../thirdparty/Android-HorizontalListView/AndroidHorizontalListView/AndroidHorizontalListView.iml" filepath="$PROJECT_DIR$/../../thirdparty/Android-HorizontalListView/AndroidHorizontalListView/AndroidHorizontalListView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../res/christmasframe_res/christmasframe_res.iml" filepath="$PROJECT_DIR$/../res/christmasframe_res/christmasframe_res.iml" />
       <module fileurl="file://$PROJECT_DIR$/christmasframes3.0.iml" filepath="$PROJECT_DIR$/christmasframes3.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../christmasframes_new/christmasframes_new.iml" filepath="$PROJECT_DIR$/../christmasframes_new/christmasframes_new.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../thirdparty/facebook-android-sdk-3.15.0/facebook/facebook.iml" filepath="$PROJECT_DIR$/../../thirdparty/facebook-android-sdk-3.15.0/facebook/facebook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../frames_lib/frames_lib.iml" filepath="$PROJECT_DIR$/../frames_lib/frames_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../thirdparty/gesture-imageview/main/gesture-imageview.iml" filepath="$PROJECT_DIR$/../../thirdparty/gesture-imageview/main/gesture-imageview.iml" />
+      <module fileurl="file:///Applications/android-sdk-macosx/extras/google/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" filepath="/Applications/android-sdk-macosx/extras/google/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../loveframe_new/loveframe_new.iml" filepath="$PROJECT_DIR$/../loveframe_new/loveframe_new.iml" />
     </modules>
   </component>
 </project>
-

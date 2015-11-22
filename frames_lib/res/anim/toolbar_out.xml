@@ -8,7 +8,7 @@ android:shareInterpolator="false"
         android:fromXDelta="0"
         android:toXDelta="0"
         android:fromYDelta="0"
-        android:toYDelta="160"
+        android:toYDelta="+100%"
         android:duration="500"
         
         />

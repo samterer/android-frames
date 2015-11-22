@@ -1,29 +1,22 @@
 package com.androidfuture.chrismas.framesfree;
 
 
-import com.androidfuture.frames.AFAppWrapper;
-import com.androidfuture.frames.Constants;
-import com.androidfuture.frames.ui.ProcessActivity;
-import com.androidfuture.tools.AFLog;
-import com.androidfuture.tools.DeviceUtils;
-import com.androidfuture.tools.StringUtils;
-import com.androidfuture.chrismas.framesfree.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
+import com.androidfuture.frames.Constants;
+import com.androidfuture.frames.ui.FrameChooseActivity;
+import com.androidfuture.tools.AFLog;
+import com.androidfuture.tools.DeviceUtils;
 
 public class SplashActivity extends Activity {
 	private static int MSG_FINISH = 200;
@@ -55,8 +48,7 @@ public class SplashActivity extends Activity {
 			builder.setMessage(R.string.no_sdcard);
 			builder.setTitle(R.string.no_sdcard_title);
 			builder.create().show();
-		}
-		else
+		} else
 		{
 			this.handler.sendEmptyMessageDelayed(MSG_FINISH, 2000);
 		}
@@ -66,7 +58,7 @@ public class SplashActivity extends Activity {
 		public void handleMessage(Message msg) {
 			if (msg.what == MSG_FINISH) {
 				Intent intent = new Intent(SplashActivity.this,
-						ProcessActivity.class);
+						FrameChooseActivity.class);
 				SharedPreferences settings = getSharedPreferences(
 						Constants.SETTING_INFOS, 0);
 				if(!settings.getBoolean("inited", false))

@@ -16,7 +16,8 @@ public class AFConf {
 	public String RootUrl;
 	public String ShareMsg;
 	public int Cat;
-	
+
+	public String TrackId;
 	public int launchType;
 	public int colNum;
 	public String ContentDir;

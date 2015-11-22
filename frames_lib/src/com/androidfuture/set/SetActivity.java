@@ -1,32 +1,5 @@
 package com.androidfuture.set;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-
-import com.androidfuture.frames.AFAppWrapper;
-import com.androidfuture.frames.Constants;
-import com.androidfuture.frames.R;
-import com.androidfuture.network.AFData;
-import com.androidfuture.network.WWRequestTask;
-import com.androidfuture.network.WWRequestTask.RequestTaskListener;
-import com.androidfuture.statistic.AFAppPush;
-import com.androidfuture.statistic.AFVersionInfo;
-import com.androidfuture.statistic.AFVersionInfoParser;
-import com.androidfuture.tools.AFLog;
-import com.androidfuture.tools.ConfigManager;
-import com.androidfuture.tools.FileUtils;
-import com.androidfuture.tools.NetWork;
-//import com.appdao.android.feedback.FeedBack;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -40,27 +13,39 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.telephony.TelephonyManager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
+import com.androidfuture.frames.AFApp;
+import com.androidfuture.frames.AFAppWrapper;
+import com.androidfuture.frames.Constants;
+import com.androidfuture.frames.R;
+import com.androidfuture.network.AFData;
+import com.androidfuture.network.WWRequestTask;
+import com.androidfuture.network.WWRequestTask.RequestTaskListener;
+import com.androidfuture.statistic.AFVersionInfo;
+import com.androidfuture.statistic.AFVersionInfoParser;
+import com.androidfuture.tools.AFLog;
+import com.androidfuture.tools.ConfigManager;
+import com.androidfuture.tools.FileUtils;
+import com.androidfuture.tools.NetWork;
+import com.google.android.gms.analytics.HitBuilders;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+
+//import com.appdao.android.feedback.FeedBack;
 
 public class SetActivity extends Activity implements OnClickListener,
 		RequestTaskListener, AFSetEventListener {
@@ -459,9 +444,7 @@ public class SetActivity extends Activity implements OnClickListener,
 
 			}
 
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SET_SHARE, null, null).build());
+
 			break;
 		}
 		case ITEM_CLEAR: {
@@ -469,9 +452,6 @@ public class SetActivity extends Activity implements OnClickListener,
 
 			new ClearCacheThread().start();
 
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SET_CLEAR, null, null).build());
 			break;
 
 		}
@@ -479,10 +459,11 @@ public class SetActivity extends Activity implements OnClickListener,
 		case ITEM_FEEDBACK: {
 			//Intent intent = new Intent(this, FeedBack.class);
 			//startActivity(intent);
-
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SET_FEEDBACK, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_SET)
+							.setAction(Constants.EVENT_SET_FEEDBACK)
+							.build());
 			break;
 		}
 
@@ -491,25 +472,30 @@ public class SetActivity extends Activity implements OnClickListener,
 			// Constants.EVENT_RATING);
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(AFAppWrapper
 					.GetInstance().GetApp().GetConf().AppUrl)));
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SET_REVIEW, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_SET)
+							.setAction(Constants.EVENT_SET_REVIEW)
+							.build());
 			break;
 		}
 		case ITEM_CHECK_VERSION: {
 			checkVersion();
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SET_VERSION, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_SET)
+							.setAction(Constants.EVENT_SET_VERSION)
+							.build());
 			break;
 		}
 		case ITEM_VERSION: {
 			Intent intent = new Intent(this,
 					VersionInfoActivity.class);
 			startActivity(intent);
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SET_CHECK_VERSION, null, null)
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_SET)
+							.setAction(Constants.EVENT_SET_CHECK_VERSION)
 							.build());
 			break;
 		}
@@ -517,9 +503,11 @@ public class SetActivity extends Activity implements OnClickListener,
 			Intent intent = new Intent(this,
 					AboutUsActivity.class);
 			startActivity(intent);
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SET_ABOUT_US, null, null).build());
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_SET)
+							.setAction(Constants.EVENT_SET_ABOUT_US)
+							.build());
 			break;
 		}
 		}
@@ -543,11 +531,12 @@ public class SetActivity extends Activity implements OnClickListener,
 			edit.putInt(Constants.SET_COLUMN_MODE, AFAppWrapper.GetInstance()
 					.GetApp().GetConf().colNum);
 			edit.commit();
-
-			EasyTracker.getInstance(this).send(
-					MapBuilder.createEvent(Constants.EVENT_CAT_SET,
-							Constants.EVENT_SWITCH_BROWSE_MODE, null, null)
+			((AFApp)getApplication()).getDefaultTracker()
+					.send(new HitBuilders.EventBuilder()
+							.setCategory(Constants.EVENT_CAT_SET)
+							.setAction(Constants.EVENT_SWITCH_BROWSE_MODE)
 							.build());
+
 			break;
 		}
 		}

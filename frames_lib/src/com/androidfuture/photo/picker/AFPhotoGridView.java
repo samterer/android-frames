@@ -30,7 +30,7 @@ public class AFPhotoGridView extends AFCellView {
 	}
 
 	@Override
-	public void update(AFData data) {
+	public void update(final AFData data, OnCellInnerViewClickListener listener) {
 		// TODO Auto-generated method stub
 		AFPhotoData appData = (AFPhotoData) data;
 		CacheThumbImageView view = (CacheThumbImageView) findViewById(R.id.photo_grid_cell_image);
